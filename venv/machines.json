@@ -1,14 +1,8 @@
 {
     "1": {
-        "nom": "test",
-        "etat": "fonctionnelle",
-        "emplacement": "pas la",
-        "niveau_eau": "moiti\u00e9"
-    },
-    "2": {
-        "nom": "zad",
-        "etat": "fonctionnelle",
-        "emplacement": "zad",
-        "niveau_eau": "plein"
+        "name": "test",
+        "state": "working",
+        "location": "df",
+        "water_level": "falf"
     }
 }

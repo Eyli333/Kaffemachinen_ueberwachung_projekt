@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Gestion des Machines à Café</title>
+    <title>Coffee machine management</title>
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; }
         table { border-collapse: collapse; width: 100%; margin-top: 20px; }
@@ -12,44 +12,44 @@
     </style>
 </head>
 <body>
-    <h1>Machines à Café</h1>
+    <h1>Coffe machine</h1>
 
-    <h2>Ajouter une nouvelle machine</h2>
+    <h2>Add a new machine</h2>
     <form method="POST" action="/add">
-        <label>Nom : <input type="text" name="nom" required></label><br><br>
-        <label>État : 
-            <select name="etat">
-                <option value="fonctionnelle">Fonctionnelle</option>
-                <option value="en maintenance">En maintenance</option>
+        <label>Name : <input type="text" name="name" required></label><br><br>
+        <label>State : 
+            <select name="state">
+                <option value="working">Working</option>
+                <option value="maintenance">Maintenance</option>
             </select>
         </label><br><br>
-        <label>Emplacement : <input type="text" name="emplacement" required></label><br><br>
-        <label>Niveau d'eau :
-            <select name="niveau_eau">
-                <option value="plein">Plein</option>
-                <option value="moitié">Moitié</option>
-                <option value="vide">Vide</option>
+        <label>Location : <input type="text" name="location" required></label><br><br>
+        <label>Water level :
+            <select name="water_level">
+                <option value="full">Full</option>
+                <option value="half">Half</option>
+                <option value="empty">Empty</option>
             </select>
         </label><br><br>
-        <button type="submit">Ajouter la machine</button>
+        <button type="submit">Add a machine</button>
     </form>
 
-    <h2>Liste des machines</h2>
+    <h2>List of machines</h2>
     <table>
         <tr>
             <th>ID</th>
-            <th>Nom</th>
-            <th>État</th>
-            <th>Emplacement</th>
-            <th>Niveau d'eau</th>
+            <th>Name</th>
+            <th>State</th>
+            <th>Location</th>
+            <th>Water level</th>
         </tr>
         {% for id, machine in machines.items() %}
         <tr>
             <td>{{ id }}</td>
-            <td>{{ machine.nom }}</td>
-            <td>{{ machine.etat }}</td>
-            <td>{{ machine.emplacement }}</td>
-            <td>{{ machine.niveau_eau }}</td>
+            <td>{{ machine.name }}</td>
+            <td>{{ machine.state }}</td>
+            <td>{{ machine.location }}</td>
+            <td>{{ machine.water_level }}</td>
         </tr>
         {% endfor %}
     </table>

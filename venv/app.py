@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 DATA_FILE = "machines.json"
 
-# Fonction pour charger les données depuis le fichier JSON
+# Function to load machines from the JSON file
 def load_machines():
     if not os.path.exists(DATA_FILE):
         with open(DATA_FILE, 'w') as f:
@@ -14,35 +14,39 @@ def load_machines():
     with open(DATA_FILE, 'r') as f:
         return json.load(f)
 
-# Fonction pour sauvegarder les données dans le fichier JSON
+# Function to save machines to the JSON file
 def save_machines(data):
     with open(DATA_FILE, 'w') as f:
         json.dump(data, f, indent=4)
 
+# Function to render the index page
 @app.route('/')
 def index():
     machines = load_machines()
     return render_template('index.html', machines=machines)
 
+# Function to add a machine
 @app.route('/add', methods=['POST'])
 def add_machine():
     machines = load_machines()
     data = request.form
     machine_id = str(max([int(i) for i in machines.keys()] + [0]) + 1)
     machines[machine_id] = {
-        "nom": data.get("nom"),
-        "etat": data.get("etat"),
-        "emplacement": data.get("emplacement"),
-        "niveau_eau": data.get("niveau_eau")
+        "name": data.get("name"),
+        "state": data.get("state"),
+        "location": data.get("location"),
+        "water_level": data.get("water_level")
     }
     save_machines(machines)
     return redirect(url_for('index'))
 
+# Function to get the machines list
 @app.route('/machines', methods=['GET'])
 def get_machines():
     machines = load_machines()
     return jsonify(machines)
 
+# Function to get a machine by ID
 @app.route('/machines/<machine_id>', methods=['GET'])
 def get_machine(machine_id):
     machines = load_machines()
@@ -50,25 +54,26 @@ def get_machine(machine_id):
     if machine:
         return jsonify(machine)
     else:
-        return jsonify({"erreur": "Machine non trouvée"}), 404
+        return jsonify({"error": "Machine not found"}), 404
 
+# Function to delete a machine by ID
 @app.route('/machines/<machine_id>', methods=['DELETE'])
 def delete_machine(machine_id):
     machines = load_machines()
     if machine_id in machines:
         del machines[machine_id]
         save_machines(machines)
-        return jsonify({"message": "Machine supprimée"})
+        return jsonify({"message": "Machine deleted"})
     else:
-        return jsonify({"erreur": "Machine non trouvée"}), 404
+        return jsonify({"error": "Machine not found"}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
 
 
 # {
-#     "nom": "LatteLuxe",
-#     "etat": "fonctionnelle",
-#     "emplacement": "Open Space",
-#     "niveau_eau": "plein"
+#     "name": "LatteLuxe",
+#     "state": "working",
+#     "location": "Open Space",
+#     "water_level": "full"
 # }
