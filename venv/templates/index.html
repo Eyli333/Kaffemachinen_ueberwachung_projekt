@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Machines à Café</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        form { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Machines à Café</h1>
+
+    <h2>Ajouter une nouvelle machine</h2>
+    <form method="POST" action="/add">
+        <label>Nom : <input type="text" name="nom" required></label><br><br>
+        <label>État : 
+            <select name="etat">
+                <option value="fonctionnelle">Fonctionnelle</option>
+                <option value="en maintenance">En maintenance</option>
+            </select>
+        </label><br><br>
+        <label>Emplacement : <input type="text" name="emplacement" required></label><br><br>
+        <label>Niveau d'eau :
+            <select name="niveau_eau">
+                <option value="plein">Plein</option>
+                <option value="moitié">Moitié</option>
+                <option value="vide">Vide</option>
+            </select>
+        </label><br><br>
+        <button type="submit">Ajouter la machine</button>
+    </form>
+
+    <h2>Liste des machines</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>État</th>
+            <th>Emplacement</th>
+            <th>Niveau d'eau</th>
+        </tr>
+        {% for id, machine in machines.items() %}
+        <tr>
+            <td>{{ id }}</td>
+            <td>{{ machine.nom }}</td>
+            <td>{{ machine.etat }}</td>
+            <td>{{ machine.emplacement }}</td>
+            <td>{{ machine.niveau_eau }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
