@@ -14,6 +14,15 @@ def load_machines():
     with open(DATA_FILE, 'r') as f:
         return json.load(f)
 
+# Function to render the machine detail page
+@app.route('/machines/<machine_id>/view')
+def view_machine(machine_id):
+    machines = load_machines()
+    machine = machines.get(machine_id)
+    if not machine:
+        return "Machine not found", 404
+    return render_template('machine_detail.html', id=machine_id, machine=machine)
+
 # Function to save machines to the JSON file
 def save_machines(data):
     with open(DATA_FILE, 'w') as f:
@@ -33,7 +42,7 @@ def add_machine():
     machine_id = str(max([int(i) for i in machines.keys()] + [0]) + 1)
     machines[machine_id] = {
         "name": data.get("name"),
-        "state": data.get("state"),
+        "status": data.get("status"),
         "location": data.get("location"),
         "water_level": data.get("water_level")
     }
@@ -73,7 +82,7 @@ if __name__ == '__main__':
 
 # {
 #     "name": "LatteLuxe",
-#     "state": "working",
+#     "status": "working",
 #     "location": "Open Space",
 #     "water_level": "full"
 # }

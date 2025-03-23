@@ -17,8 +17,8 @@
     <h2>Add a new machine</h2>
     <form method="POST" action="/add">
         <label>Name : <input type="text" name="name" required></label><br><br>
-        <label>State : 
-            <select name="state">
+        <label>Status : 
+            <select name="status">
                 <option value="working">Working</option>
                 <option value="maintenance">Maintenance</option>
             </select>
@@ -39,15 +39,15 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>State</th>
+            <th>Status</th>
             <th>Location</th>
             <th>Water level</th>
         </tr>
         {% for id, machine in machines.items() %}
         <tr>
             <td>{{ id }}</td>
-            <td>{{ machine.name }}</td>
-            <td>{{ machine.state }}</td>
+            <td><a href="/machines/{{ id }}/view">{{ machine.name }}</a></td>
+            <td>{{ machine.status }}</td>
             <td>{{ machine.location }}</td>
             <td>{{ machine.water_level }}</td>
         </tr>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Machine #{{ id }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        .info { padding: 10px; border: 1px solid #ccc; margin-bottom: 10px; }
+        a { text-decoration: none; color: blue; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Machine #{{ id }}</h1>
+        <div class="info"><strong>Name:</strong> {{ machine.name }}</div>
+        <div class="info"><strong>Status:</strong> {{ machine.status }}</div>
+        <div class="info"><strong>Location:</strong> {{ machine.location }}</div>
+        <div class="info"><strong>Water Level:</strong> {{ machine.water_level }}</div>
+        <a href="/">⬅ Back to list</a>
+    </div>
+</body>
+</html>
