@@ -1,8 +1,14 @@
 {
     "1": {
         "name": "test",
-        "state": "working",
+        "status": "working",
         "location": "df",
-        "water_level": "falf"
+        "water_level": "half"
+    },
+    "2": {
+        "name": "test",
+        "status": "working",
+        "location": "test",
+        "water_level": "half"
     }
 }
