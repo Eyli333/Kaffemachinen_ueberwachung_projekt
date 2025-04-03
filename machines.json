@@ -1,0 +1,14 @@
+{
+    "1": {
+        "name": "efesf",
+        "status": "working",
+        "location": "zeez",
+        "water_level": "full"
+    },
+    "2": {
+        "name": "test",
+        "status": "working",
+        "location": "open space",
+        "water_level": "full"
+    }
+}
