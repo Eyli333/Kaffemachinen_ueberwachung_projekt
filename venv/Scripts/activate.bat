@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=D:\Documents\M1\Musteranalyse & MI\Kaffe_projekt\kaffe_projekt\Kaffemachinen_ueberwachung_projekt\venv
+set VIRTUAL_ENV=D:\Documents\M1\Musteranalyse & MI\Kaffe_projekt\Kaffe_projekt\Kaffemachinen_ueberwachung_projekt\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
