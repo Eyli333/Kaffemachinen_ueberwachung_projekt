@@ -50,6 +50,11 @@
             <td>{{ machine.status }}</td>
             <td>{{ machine.location }}</td>
             <td>{{ machine.water_level }}</td>
+            <td>
+                <form method="POST" action="/machines/{{ id }}/delete" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </table>

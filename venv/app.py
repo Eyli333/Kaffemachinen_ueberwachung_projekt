@@ -47,13 +47,16 @@ def add_machine():
         "water_level": data.get("water_level")
     }
     save_machines(machines)
-    return redirect(url_for('index'))
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return jsonify({"message": "Machine added successfully", "machine_id": machine_id}), 201
+    else:
+        return redirect(url_for('index'))
 
 # Function to get the machines list
 @app.route('/machines', methods=['GET'])
 def get_machines():
     machines = load_machines()
-    return jsonify(machines)
+    return jsonify(machines), 200
 
 # Function to get a machine by ID
 @app.route('/machines/<machine_id>', methods=['GET'])
@@ -66,13 +69,13 @@ def get_machine(machine_id):
         return jsonify({"error": "Machine not found"}), 404
 
 # Function to delete a machine by ID
-@app.route('/machines/<machine_id>', methods=['DELETE'])
+@app.route('/machines/<machine_id>/delete', methods=['POST'])
 def delete_machine(machine_id):
     machines = load_machines()
     if machine_id in machines:
         del machines[machine_id]
         save_machines(machines)
-        return jsonify({"message": "Machine deleted"})
+        return redirect(url_for('index'))
     else:
         return jsonify({"error": "Machine not found"}), 404
 
