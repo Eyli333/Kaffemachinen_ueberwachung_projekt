@@ -1,0 +1,139 @@
+body {
+     font-family: Arial, sans-serif; padding: 20px; 
+}
+
+table { 
+    border-collapse: collapse; width: 100%; margin-top: 20px; 
+}
+
+th, td { 
+    border: 1px solid #ddd; padding: 8px; text-align: left; 
+}
+
+th { 
+    background-color: #f2f2f2; 
+}
+
+form { 
+    margin-bottom: 20px; 
+    background-color: #a5a4a4;
+    padding: 10px;
+    color: white;
+    border-radius: 15px;
+}
+
+h1  {
+    color: #a5a4a4;
+}
+
+.add-button {
+    background-color: #a5a4a4;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin: 10px;
+  }
+
+.add-button:hover {
+    background-color: #656565;
+}
+
+#addForm {
+    display: none;
+    margin-top: 5px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#addForm label {
+    margin: 5px;
+}
+
+#addSection {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#mainMachineSection {
+    background-color: #a5a4a4;
+    color: white;
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+#mainMachineSection h2 {
+    margin: 10px;
+}
+
+#statusInformation img{
+    width: 30%;
+    border-radius: 15px;
+}
+
+#statusInformation {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px;
+    justify-content: space-between;
+}
+
+ul {
+    padding: 0px;
+}
+
+li {
+    list-style: none;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+.player-wrap {
+    width: 90%;
+    margin: 200px auto;
+}
+
+.audio-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+button {
+    background-color: #000000;
+    border-radius: 3px;
+    padding: 5px 10px;
+    border: none;
+    margin: 0 2px;
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+}
+
+button:hover {
+    background-color: #000000;
+}
+
+button i {
+    font-size: 20px;
+    color: #2b2b2b;
+}

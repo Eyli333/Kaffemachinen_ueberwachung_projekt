@@ -1,21 +1,82 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Coffee machine management</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        form { margin-bottom: 20px; }
-    </style>
-</head>
-<body>
-    <h1>Coffe machine</h1>
+    <head>
+        <meta charset="UTF-8">
+        <title>Coffee machine management</title>
+        <link rel="stylesheet" href="../static/style.css">
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Audio Visualization | Wavesurfer.js</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+            <!-- <link rel="stylesheet" href="style.css"> -->
+    </head>
+    <body>
+        <div class="player-wrap">
+            <div id="audiowave"></div>
+            <div class="audio-controls">
+                <button type="button" class="btn-backward">
+                    <i class="fa fa-step-backward"></i>
+                </button>
+                <button type="button" class="btn-toggle-pause">
+                    <i class="fa fa-play"></i> <i class="fa fa-pause"></i>
+                </button>
+                <button type="button" class="btn-forward">
+                    <i class="fa fa-step-forward"></i>
+                </button>
+                <button type="button" class="btn-toggle-mute">
+                    <i class="fa fa-volume-off"></i>
+                </button>
+                <button type="button" class="btn-stop">
+                    <i class="fa fa-stop"></i>
+                </button>
+            </div>
+        </div>
+    
+        <script src="https://unpkg.com/wavesurfer.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <script src="../static/script.js"></script>
 
-    <h2>Add a new machine</h2>
-    <form method="POST" action="/add">
+    <h1>coffee machine</h1> 
+
+
+    <script>
+        function hideOrShowForm() {
+            form = document.getElementById("addForm");
+            form.style.display = (form.style.display === "flex") ? "none" : "flex"
+        }
+    </script>
+
+    <div id="mainMachineSection">
+        {% for id_main, machine_main in machines.items() %}
+            {% if loop.first %}
+            <h2>{{ machine_main.name}}</h2>
+            <div id="statusInformation">
+                <ul>
+                    <li> <b>current status:</b> {{ machine_main.status }}</li>
+                    <li> <b>location:</b> {{ machine_main.location }}</li>
+                    <li> <b>water level: </b>
+                        {% if machine_main.water_level == "half" %}
+                        <progress value="50" max="100"></progress>
+                        {% elif machine_main.water_level == "full" %}
+                        <progress value="100" max="100"></progress>
+                        {% elif machine_main.water_level == "empty" %}
+                        <progress value="0" max="100"></progress>
+                        {% endif %}
+                    </li>
+                </ul>
+                <img src="../static/images/coffee.png">
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div id="addSection">
+        <h3>Add a new machine</h3>
+        <button class="add-button" onclick="hideOrShowForm()">+</button>
+    </div>
+
+    <form method="POST" action="/add" id="addForm">
         <label>Name : <input type="text" name="name" required></label><br><br>
         <label>Status : 
             <select name="status">
@@ -31,9 +92,10 @@
                 <option value="empty">Empty</option>
             </select>
         </label><br><br>
-        <button type="submit">Add a machine</button>
+        <button type="submit" onclick="hideOrShowForm()">Add machine</button>
     </form>
-
+   
+    
     <h2>List of machines</h2>
     <table>
         <tr>
@@ -58,5 +120,6 @@
         </tr>
         {% endfor %}
     </table>
+    
 </body>
 </html>
