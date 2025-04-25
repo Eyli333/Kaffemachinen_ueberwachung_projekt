@@ -71,6 +71,6 @@ if __name__ == "__main__":
     if not os.path.exists(target_folder):
         print(f"Error: The folder '{target_folder}' doesn't exist.")
         exit(1)
-    api_endpoint_url = "http://127.0.0.1:8080/upload_machine_data"  # New API endpoint URL
+    api_endpoint_url = "https://eyli.pythonanywhere.com/upload_machine_data"  # New API endpoint URL
 
     send_data_to_api(target_folder, api_endpoint_url)

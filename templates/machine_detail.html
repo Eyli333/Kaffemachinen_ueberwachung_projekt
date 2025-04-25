@@ -112,6 +112,23 @@
             </div>
         </div>
 
+
+        <div class="info"><strong>Name:</strong> {{ machine.name }}</div>
+        <div class="info"><strong>Status:</strong> {{ machine.status }}</div>
+        <div class="info"><strong>Location:</strong> {{ machine.location }}</div>
+        
+        <p>Real Time Data:</p>
+        <div class="info"><strong>AI Status:</strong> {{ machine.ai_status }}</div>
+        <div class="info"><strong>AI Model:</strong> {{ machine.ai_model }}</div>
+        <div class="info"><strong>AI Accuracy:</strong> {{ machine.accuracy }}</div>
+        <div class="info"><strong>AI Loss:</strong> {{ machine.loss_function }}</div>
+
+        <div class="info"><strong>Timestamp:</strong> {{ machine.timestamp }}</div>
+        <div class="info"><strong>1.Sensorposition:</strong> {{ machine.sensorPosition1 }}</div>
+        <div class="info"><strong>2.Sensorposition:</strong> {{ machine.sensorPosition2 }}</div>
+        <div class="info"><strong>Data Label:</strong> {{ machine.data_label }}</div>
+        <div class="info"><strong>Data Notes:</strong> {{ machine.data_notes }}</div>
+        
         <!-- Display machine image if it exists -->
         {% if machine.image %}
         <div class="image-container">
@@ -121,21 +138,6 @@
         <p>No image available for this machine.</p>
         {% endif %}
 
-        <div class="info"><strong>Name:</strong> {{ machine.name }}</div>
-        <div class="info"><strong>Status:</strong> {{ machine.status }}</div>
-        <div class="info"><strong>Location:</strong> {{ machine.location }}</div>
-
-        <div class="info"><strong>AI Status:</strong> {{ machine.ai_status }}</div>
-        <div class="info"><strong>AI Model:</strong> {{ machine.ai_model }}</div>
-        <div class="info"><strong>AI Accuracy:</strong> {{ machine.accuracy }}</div>
-        <div class="info"><strong>AI Loss:</strong> {{ machine.loss_function }}</div>
-
-        <div class="info"><strong>Timestamp:</strong> {{ machine.timestamp }}</div>
-        <div class="info"><strong>1.Sensorposition:</strong> {{ machine.sensorposition1 }}</div>
-        <div class="info"><strong>2.Sensorposition:</strong> {{ machine.sensorposition2 }}</div>
-        <div class="info"><strong>Data Label:</strong> {{ machine.data_label }}</div>
-        <div class="info"><strong>Data Notes:</strong> {{ machine.data_notes }}</div>
-        
 
         <a href="/">⬅ Back to list</a>
     </div>
