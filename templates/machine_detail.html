@@ -8,16 +8,96 @@
         .container { max-width: 600px; margin: auto; }
         .info { padding: 10px; border: 1px solid #ccc; margin-bottom: 10px; }
         a { text-decoration: none; color: blue; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        .info {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .info strong {
+            color: #444;
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Machine #{{ id }}</h1>
+
+        <!-- Display machine image if it exists -->
+        {% if machine.image %}
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='uploads/' + machine.image) }}" alt="Machine Image">
+        </div>
+        {% else %}
+        <p>No image available for this machine.</p>
+        {% endif %}
+
         <div class="info"><strong>Name:</strong> {{ machine.name }}</div>
         <div class="info"><strong>Status:</strong> {{ machine.status }}</div>
         <div class="info"><strong>Location:</strong> {{ machine.location }}</div>
         <div class="info"><strong>Water Level:</strong> {{ machine.water_level }}</div>
+
         <a href="/">⬅ Back to list</a>
     </div>
+    <div class="player-wrap">
+        <div id="audiowave"></div>
+        <div class="audio-controls">
+            <button type="button" class="btn-backward">
+                <i class="fa fa-step-backward"></i>
+            </button>
+            <button type="button" class="btn-toggle-pause">
+                <i class="fa fa-play"></i> <i class="fa fa-pause"></i>
+            </button>
+            <button type="button" class="btn-forward">
+                <i class="fa fa-step-forward"></i>
+            </button>
+            <button type="button" class="btn-toggle-mute">
+                <i class="fa fa-volume-off"></i>
+            </button>
+            <button type="button" class="btn-stop">
+                <i class="fa fa-stop"></i>
+            </button>
+        </div>
+    </div>
+
 </body>
 </html>

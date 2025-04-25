@@ -1,0 +1,13 @@
+{
+    "cycle_id": 2,
+       "timestamp": "2025-04-16T16:32:17",
+       "cycle": "espresso_cycle",
+       "lable": "WasserLeer_BohnenOk",
+       "1.sensorPosition": "microfon",
+       "2.sensorPosition": "bohnenbehaelter",
+       "coffee_type": "-",
+       "duration_sec": 60,
+       "sample_rate": 96000,
+       "last_clean_cycle": null,
+       "notes": "2.cafe;"
+}

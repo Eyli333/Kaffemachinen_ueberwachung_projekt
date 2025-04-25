@@ -1,0 +1,10 @@
+{
+  "cycle_id": 3,
+  "timestamp": "2025-04-16T17:20:57",
+  "label": "espresso_cycle",
+  "coffee_type": "-",
+  "duration_sec": 70,
+  "sample_rate": 96000,
+  "last_clean_cycle": null,
+  "notes": "3.cafe"
+}

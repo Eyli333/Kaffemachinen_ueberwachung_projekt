@@ -3,36 +3,7 @@
         "name": "Coffe machine 1",
         "status": "working",
         "location": "Open space",
-        "water_level": "empty"
-    },
-    "2": {
-        "name": "Coffe machine 2",
-        "status": "working",
-        "location": "Open space",
-        "water_level": "full"
-    },
-    "3": {
-        "name": "Coffe machine 3",
-        "status": "working",
-        "location": "Open space",
-        "water_level": "full"
-    },
-    "4": {
-        "name": "test",
-        "status": "working",
-        "location": "test",
-        "water_level": "full"
-    },
-    "5": {
-        "name": "ghgfhgf",
-        "status": "working",
-        "location": "fghfhgf",
-        "water_level": "full"
-    },
-    "6": {
-        "name": "sdfsd",
-        "status": "working",
-        "location": "sdfdsf",
-        "water_level": "full"
+        "water_level": "full",
+        "image": "machine_1/specto.jpg"
     }
 }
