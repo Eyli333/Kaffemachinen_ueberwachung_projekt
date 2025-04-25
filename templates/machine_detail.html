@@ -56,11 +56,61 @@
         a:hover {
             text-decoration: underline;
         }
+        #mainMachineSection {
+            background-color: #a5a4a4;
+            color: white;
+            border-radius: 15px;
+            padding: 10px;
+            display: flex;
+            align-items: stretch;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+
+        #mainMachineSection h2 {
+            margin: 10px;
+        }
+
+        #statusInformation img{
+            width: 30%;
+            border-radius: 15px;
+        }
+
+        #statusInformation {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 5px;
+            justify-content: space-between;
+        }
+
+        ul {
+            padding: 0px;
+        }
+
+        li {
+            list-style: none;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
     </style>
 </head>
-<body>
+<body><a href="/">⬅ Back to list</a>
     <div class="container">
         <h1>Machine #{{ id }}</h1>
+
+        <div id="mainMachineSection">
+            <h2>{{ machine.name}}</h2>
+            <div id="statusInformation">
+                <ul>
+                    <li> <b>current status:</b> {{ machine.status }}</li>
+                    <li> <b>location:</b> {{ machine.location }}</li>
+                </ul>
+                <img src="../../static/images/coffee.png">
+            </div>
+        </div>
 
         <!-- Display machine image if it exists -->
         {% if machine.image %}
@@ -74,7 +124,18 @@
         <div class="info"><strong>Name:</strong> {{ machine.name }}</div>
         <div class="info"><strong>Status:</strong> {{ machine.status }}</div>
         <div class="info"><strong>Location:</strong> {{ machine.location }}</div>
-        <div class="info"><strong>Water Level:</strong> {{ machine.water_level }}</div>
+
+        <div class="info"><strong>AI Status:</strong> {{ machine.ai_status }}</div>
+        <div class="info"><strong>AI Model:</strong> {{ machine.ai_model }}</div>
+        <div class="info"><strong>AI Accuracy:</strong> {{ machine.accuracy }}</div>
+        <div class="info"><strong>AI Loss:</strong> {{ machine.loss_function }}</div>
+
+        <div class="info"><strong>Timestamp:</strong> {{ machine.timestamp }}</div>
+        <div class="info"><strong>1.Sensorposition:</strong> {{ machine.sensorposition1 }}</div>
+        <div class="info"><strong>2.Sensorposition:</strong> {{ machine.sensorposition2 }}</div>
+        <div class="info"><strong>Data Label:</strong> {{ machine.data_label }}</div>
+        <div class="info"><strong>Data Notes:</strong> {{ machine.data_notes }}</div>
+        
 
         <a href="/">⬅ Back to list</a>
     </div>

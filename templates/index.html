@@ -27,30 +27,6 @@
         }
     </script>
 
-    <div id="mainMachineSection">
-        {% for id_main, machine_main in machines.items() %}
-            {% if loop.first %}
-            <h2>{{ machine_main.name}}</h2>
-            <div id="statusInformation">
-                <ul>
-                    <li> <b>current status:</b> {{ machine_main.status }}</li>
-                    <li> <b>location:</b> {{ machine_main.location }}</li>
-                    <li> <b>water level: </b>
-                        {% if machine_main.water_level == "half" %}
-                        <progress value="50" max="100"></progress>
-                        {% elif machine_main.water_level == "full" %}
-                        <progress value="100" max="100"></progress>
-                        {% elif machine_main.water_level == "empty" %}
-                        <progress value="0" max="100"></progress>
-                        {% endif %}
-                    </li>
-                </ul>
-                <img src="../static/images/coffee.png">
-            </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-
     <div id="addSection">
         <h3>Add a new machine</h3>
         <button class="add-button" onclick="hideOrShowForm()">+</button>
@@ -83,7 +59,6 @@
             <th>Name</th>
             <th>Status</th>
             <th>Location</th>
-            <th>Water level</th>
         </tr>
         {% for id, machine in machines.items() %}
         <tr>
@@ -91,7 +66,6 @@
             <td><a href="/machines/{{ id }}/view">{{ machine.name }}</a></td>
             <td>{{ machine.status }}</td>
             <td>{{ machine.location }}</td>
-            <td>{{ machine.water_level }}</td>
             <td>
                 <form method="POST" action="/machines/{{ id }}/delete" style="display:inline;">
                     <button type="submit">Delete</button>

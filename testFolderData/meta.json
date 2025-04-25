@@ -1,0 +1,24 @@
+{
+  "machine_id": 1,
+  "name": "Patrick's Maschine",
+  "status": "working",
+  "location": "Tim's Haus",
+
+  "ai_status": "null",
+  "ai_model": "ResNet18",
+  "accuracy": 0.95,
+  "loss_function": "null",
+
+  "timestamp": "2025-04-18T16:35:04",
+  "lable": "WasserLeer_BohnenOk",
+  "sensorPosition1": "microfon",
+  "sensorPosition2": "bohnenbehaelter",
+  
+  "cycle": "espresso_cycle",
+  "cycle_id": 2,
+  "coffee_type": "_",
+  "duration_sec": 65,
+  "sample_rate": 96000,
+  "last_clean_cycle": null,
+  "notes": "test"
+}

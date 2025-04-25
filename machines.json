@@ -1,9 +1,17 @@
 {
     "1": {
-        "name": "Coffe machine 1",
+        "name": "Patrick's Maschine",
         "status": "working",
-        "location": "Open space",
-        "water_level": "full",
-        "image": "machine_1/specto.jpg"
+        "location": "Tim's Haus",
+        "ai_status": "null",
+        "ai_model": "ResNet18",
+        "accuracy": 0.95,
+        "timestamp": "2025-04-18T16:35:04",
+        "sensorPosition1": "microfon",
+        "sensorPosition2": "bohnenbehaelter",
+        "data_label": "WasserLeer_BohnenOk",
+        "data_notes": "test",
+        "loss_function": "null",
+        "image": "machine_1/mel_spectrogram1.png"
     }
 }
