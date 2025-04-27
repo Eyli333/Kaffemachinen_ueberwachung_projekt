@@ -1,6 +1,6 @@
 {
   "machine_id": 1,
-  "name": "Patrick's Maschine",
+  "name": "kaffe Maschine",
   "status": "working",
   "location": "Tim's Haus",
 
@@ -8,9 +8,10 @@
   "ai_model": "ResNet18",
   "accuracy": 0.95,
   "loss_function": "null",
+  "lable": "WasserLeer_BohnenOk",
+  "data_result": "WasserLeer_BohnenOk",
 
   "timestamp": "2025-04-18T16:35:04",
-  "lable": "WasserLeer_BohnenOk",
   "sensorPosition1": "microfon",
   "sensorPosition2": "bohnenbehaelter",
   
