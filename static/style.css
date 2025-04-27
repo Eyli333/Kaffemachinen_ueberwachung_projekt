@@ -84,10 +84,16 @@ button {
 }
 
 button:hover {
-    background-color: #000000;
+    background-color: #656565;
+    color: white;
 }
 
 button i {
     font-size: 20px;
     color: #2b2b2b;
+}
+
+#delete {
+    background-color: white;
+    display: inline;
 }

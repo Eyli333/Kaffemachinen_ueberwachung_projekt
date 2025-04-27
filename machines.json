@@ -1,17 +1,32 @@
 {
     "1": {
-        "name": "Patrick's Maschine",
-        "status": "working",
-        "location": "Tim's Haus",
-        "ai_status": "null",
-        "ai_model": "ResNet18",
-        "accuracy": 0.95,
-        "timestamp": "2025-04-18T16:35:04",
+        "name": "Kaffee maschine 1",
+        "status": "Funktional",
+        "location": "HTW Saar",
+        "ai_status": "undefined",
+        "ai_model": "ResNet34",
+        "accuracy": 1.0,
+        "timestamp": "2025-04-17T18:02:51",
         "sensorPosition1": "microfon",
         "sensorPosition2": "bohnenbehaelter",
-        "data_label": "WasserLeer_BohnenOk",
-        "data_notes": "test",
-        "loss_function": "null",
-        "image": "machine_1/mel_spectrogram1.png"
+        "data_label": "WasserOk_BohnenOk",
+        "data_results": "WasserOk_BohnenOk",
+        "loss_function": 1.0,
+        "image": "machine_1/mel_spectrogram1.png",
+        "prediction_confidence": 0.4832,
+        "all_class_confidences": {
+            "WasserOk_BohnenOk": 0.4832,
+            "WasserLeer_BohnenOk": 0.3743,
+            "WasserLeer_BohnenLeer": 0.0674,
+            "WasserOk_BohnenLeer": 0.0752
+        },
+        "prediction_method": "most frequent class",
+        "data_notes": "tank_voll",
+        "cycle": "espresso_cycle",
+        "cycle_id": 10,
+        "coffee_type": "-",
+        "duration_sec": 65,
+        "sample_rate": 96000,
+        "last_clean_cycle": null
     }
 }

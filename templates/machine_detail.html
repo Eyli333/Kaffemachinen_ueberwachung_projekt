@@ -124,12 +124,22 @@
         <div class="info"><strong>AI Accuracy:</strong> {{ machine.accuracy }}</div>
         <div class="info"><strong>AI Loss:</strong> {{ machine.loss_function }}</div>
         <div class="info"><strong>Data Label (soll ergebniss):</strong> {{ machine.data_label }}</div>
-        <div class="info"><strong>Data Result (ist ergebniss):</strong> {{ machine.data_result }}</div>
+        <div class="info"><strong>Data Result (ist ergebniss):</strong> {{ machine.data_results }} <strong>| Confidence: </strong> {{machine.prediction_confidence}} </div>
+        
+        <!-- all possible classes with confidence -->
+        <div class="info"><strong>All Class Confidences:</strong>
+            <ul>
+                {% for key, value in machine.all_class_confidences.items() %}
+                    <li><strong>{{ key }}:</strong> {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- data prediction method -->
+        <div class="info"><strong>Data Prediction Method:</strong> {{ machine.prediction_method }}</div>
         <br>
         <div class="info"><strong>Timestamp:</strong> {{ machine.timestamp }}</div>
         <div class="info"><strong>1.Sensorposition:</strong> {{ machine.sensorPosition1 }}</div>
         <div class="info"><strong>2.Sensorposition:</strong> {{ machine.sensorPosition2 }}</div>
-        <div class="info"><strong>Data Notes:</strong> {{ machine.data_notes }}</div>
         
         <!-- Display machine image if it exists -->
         {% if machine.image %}

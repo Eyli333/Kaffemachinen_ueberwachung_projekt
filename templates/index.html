@@ -53,7 +53,7 @@
     </form>
    
     
-    <h2>List of machines</h2>
+    <h3>List of machines</h3>
     <table>
         <tr>
             <th>ID</th>
@@ -67,8 +67,8 @@
             <td><a href="/machines/{{ id }}/view">{{ machine.name }}</a></td>
             <td>{{ machine.status }}</td>
             <td>{{ machine.location }}</td>
-            <td>
-                <form method="POST" action="/machines/{{ id }}/delete" style="display:inline;">
+            <td style="border: none;">
+                <form method="POST" action="/machines/{{ id }}/delete" id="delete">
                     <button type="submit">Delete</button>
                 </form>
             </td>

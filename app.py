@@ -13,8 +13,6 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-
-
 # Check if the file extension is allowed
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -47,7 +45,15 @@ def view_machine(machine_id):
     machine = machines.get(machine_id)
     if not machine:
         return "Machine not found", 404
-    return render_template('machine_detail.html', id=machine_id, machine=machine)
+
+    all_class_confidences = machine.get('all_class_confidences', {})
+    prediction_method = machine.get('prediction_method', 'Non spécifié')
+
+    return render_template('machine_detail.html',
+                           id=machine_id,
+                           machine=machine,
+                           all_class_confidences=all_class_confidences,
+                           prediction_method=prediction_method)
 
 # Get the list of all machines (JSON API)
 @app.route('/machines', methods=['GET'])
@@ -71,10 +77,12 @@ def get_machine(machine_id):
                     del machine['image'] # Remove the original path to avoid confusion
             except FileNotFoundError:
                 machine['image_base64'] = None # Or a default encoded image
+
+        machine['all_class_confidences'] = machine.get('all_class_confidences', {})
+        machine['prediction_method'] = machine.get('prediction_method', 'Non spécifié')
+
         return jsonify(machine)
     return jsonify({"error": "Machine not found"}), 404
-
-
 
 # Delete a machine by ID
 @app.route('/machines/<machine_id>/delete', methods=['POST'])
@@ -117,6 +125,12 @@ def add_machine():
         "timestamp": data.get("timestamp"),
         "data_label": data.get("data_label"),
         "data_notes": data.get("data_notes"),
+
+        
+        "prediction_confidence": None,
+        "all_class_confidences": {},
+        "prediction_method": None,
+
         "image": ""  # image path will be stored here after upload
     }
     save_machines(machines)
@@ -174,24 +188,30 @@ def upload_machine_data():
             return jsonify({"error": "Missing 'machine_id' in request."}), 400
 
         machines = load_machines()
-        machines[machine_id] = {
-            "name": metadata.get("name", "default_name"),
-            "status": metadata.get("status", "unknown"),
-            "location": metadata.get("location", "unknown"),
+        if machine_id not in machines:
+            machines[machine_id] = {} # Create a new entry if the machine ID doesn't exist
 
-            "ai_status": metadata.get("ai_status", "null"),
-            "ai_model": metadata.get("ai_model", "null"),
-            "accuracy": metadata.get("accuracy", "null"),
-            "loss_function": metadata.get("loss_function", "null"),
+        
+        machines[machine_id].update({
+            "name": metadata.get("name", machines[machine_id].get("name", "default_name")),
+            "status": metadata.get("status", machines[machine_id].get("status", "unknown")),
+            "location": metadata.get("location", machines[machine_id].get("location", "unknown")),
 
-            "timestamp": metadata.get("timestamp", "null"),
-            "sensorPosition1": metadata.get("sensorPosition1", "null"),
-            "sensorPosition2": metadata.get("sensorPosition2", "null"),
-            "data_label": metadata.get("lable", "null"),
-            "data_notes": metadata.get("notes", "null"),
+            "ai_status": metadata.get("ai_status", machines[machine_id].get("ai_status", "null")),
+            "ai_model": metadata.get("ai_model", machines[machine_id].get("ai_model", "ResNet18")),
+            "accuracy": metadata.get("accuracy", machines[machine_id].get("accuracy", "null")),
+            "loss_function": metadata.get("loss_function", machines[machine_id].get("loss_function", "null")),
+            "data_results": metadata.get("data_results", machines[machine_id].get("data_results", "null")),
+            "prediction_confidence": metadata.get("prediction_confidence", machines[machine_id].get("prediction_confidence", None)),
+            "all_class_confidences": metadata.get("all_class_confidences", machines[machine_id].get("all_class_confidences", {})),
+            "prediction_method": metadata.get("prediction_method", machines[machine_id].get("prediction_method", "most frequent class")),
 
-            "image": machines.get(machine_id, {}).get('image', "") # Keep existing image path if it exists
-        }
+            "timestamp": metadata.get("timestamp", machines[machine_id].get("timestamp", "null")),
+            "sensorPosition1": metadata.get("sensorPosition1", machines[machine_id].get("sensorPosition1", "null")),
+            "sensorPosition2": metadata.get("sensorPosition2", machines[machine_id].get("sensorPosition2", "null")),
+            "data_label": metadata.get("lable", machines[machine_id].get("data_label", "null")),
+            "data_notes": metadata.get("notes", machines[machine_id].get("data_notes", "null")),
+        })
 
         if image_base64:
             try:

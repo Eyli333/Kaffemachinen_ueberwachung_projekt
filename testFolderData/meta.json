@@ -1,15 +1,15 @@
 {
   "machine_id": 1,
-  "name": "kaffe Maschine",
-  "status": "working",
-  "location": "Tim's Haus",
+  "name": "Kaffee maschine 1",
+  "status": "Funktional",
+  "location": "HTW Saar",
 
-  "ai_status": "null",
+  "ai_status": "Fertig",
   "ai_model": "ResNet18",
   "accuracy": 0.95,
-  "loss_function": "null",
+  "loss_function": "0.15",
   "lable": "WasserLeer_BohnenOk",
-  "data_result": "WasserLeer_BohnenOk",
+  "data_results": "WasserLeer_BohnenOk",
 
   "timestamp": "2025-04-18T16:35:04",
   "sensorPosition1": "microfon",

@@ -14,7 +14,7 @@ def send_data_to_api(folder_path, api_url):
     """
 
     meta_file_path = os.path.join(folder_path, "meta.json")
-    image_file_path = os.path.join(folder_path, "mel_spectrogram1.png")
+    image_file_path = os.path.join(folder_path, "mel_spectrogram.png")
 
     if not os.path.exists(meta_file_path):
         print(f"Error: The meta.json file cannot be found in '{folder_path}'.")
@@ -67,10 +67,13 @@ def send_data_to_api(folder_path, api_url):
 
 if __name__ == "__main__":
 
-    target_folder = "testFolderData/"  # Folder to be processed
+    target_folder = "D:\Documents\M1\Musteranalyse & MI\Kaffe_projekt\CNN\dataToSend"  # Folder to be processed
+    # target_folder = "testFolderData/"  # Folder to be processed
     if not os.path.exists(target_folder):
         print(f"Error: The folder '{target_folder}' doesn't exist.")
         exit(1)
-    api_endpoint_url = "https://eyli.pythonanywhere.com/upload_machine_data"  # New API endpoint URL
+    # api_endpoint_url = "http://192.168.0.139:8080"  # New API endpoint URL
+    api_endpoint_url = "http://127.0.0.1:8080/upload_machine_data"  # New API endpoint URL
+    # api_endpoint_url = "https://eyli.pythonanywhere.com/upload_machine_data"  # New API endpoint URL
 
     send_data_to_api(target_folder, api_endpoint_url)
